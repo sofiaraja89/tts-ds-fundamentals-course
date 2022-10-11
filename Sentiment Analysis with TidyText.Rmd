@@ -1,0 +1,83 @@
+---
+title: "Sentiment Analysis with TidyText"
+output: html_notebook
+---
+
+Congratulations on completing the Data Science Tech Talent South course! 
+In this project you will be using R and TidyText for sentiment analysis on old essays that you've completed in undergrad. You will need to install TidyText for the sentiment analysis and qdaptools to load the .docx files. 
+Here is a text on using TidyText to guide you (https://www.tidytextmining.com/sentiment.html)
+
+```{r}
+library(tidyverse)
+library(tidytext)
+library(qdapTools)
+library(purrr)
+library(data.table)
+library(dplyr)
+library(stringr)
+get_sentiments("afinn")
+get_sentiments("bing")
+get_sentiments("nrc")
+```
+
+First, load an essay into R using the read_docx function of the qdaptools library.
+
+```{r}
+#Suggestion for loading
+#multiple
+#essays <- lapply(Sys.glob("data/*.docx"), read_docx)
+#single
+#essay <- read_docx("data/myEssay1.docx")
+
+
+```
+
+Next remove the bibliography / reference section and the title page (grepl can help find the bibliography and checking the length of the character array can help determine if something is not a paragraph)
+
+```{r}
+#Suggestion for removing bibliography
+#for (i in 1:length(essays)){
+#  markForTruncation <- 0
+#  for (j in 1:length(essays[[i]])){
+#    if(grepl("^[Bb]ibliography|[[Rr]eferences|BIBLIOGRAPHY|REFERENCES", essays[[i]][[j]], fixed = FALSE)){
+#      markForTruncation <- j
+#    }
+#  }
+#  if(markForTruncation != 0){
+#    essays[[i]] <- essays[[i]][1:markForTruncation-1]
+#  }
+#}
+
+
+```
+
+Next we have to split the essay into words with a line(sentence) and paragraph number in this format:
+tbl_df:
+column<fctr> column<int>   column<int>  column<chr>
+essay        linenumber    paragraph    word
+Or you could find a way to use TidyText with data in a different format
+
+```{r}
+
+
+```
+
+Now we can simply can start applying the same logic used by the TidyText documentation (see examples in the link in the initial prompt)
+Complete the following:
+1. Bind rows to join sections of text to find the overall sentiment for paragraphs
+2. Use ggplot to plot the sentiment of each chapter
+3. Try creating a loop that will follow this process for multiple essays and compare the change in sentiments
+
+This is your project, take it whatever direction you like!
+
+
+```{r}
+#1
+
+```
+
+```{r}
+#2
+
+```
+
